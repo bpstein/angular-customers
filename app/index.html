@@ -14,9 +14,19 @@
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body>
+<body ng-init="people=[{name:'John', city:'London'}, {name:'Rahul', city:'New York'}, {name:'Kumiko', city:'Sydney'}, {name:'Paul', city:'Tokyo'}]">
 
-  
+  <table>
+    <tr>
+      <td>Name</td>
+      <td>City</td>
+    </tr>
+
+    <tr ng-repeat="person in people">
+      <td>{{ person.name }}</td>
+      <td>{{ person.city }}</td>
+    </tr>
+  </table>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
