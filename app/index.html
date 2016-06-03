@@ -14,17 +14,26 @@
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body ng-init="people=[{name:'John', city:'London'}, {name:'Rahul', city:'New York'}, {name:'Kumiko', city:'Sydney'}, {name:'Paul', city:'Tokyo'}]">
+<body ng-init="customers=[
+  {joined: '2000-12-05', name:'John', city:'London', orderTotal: 9.5532}, 
+  {joined: '2005-11-15',name:'Rahul', city:'New York', orderTotal: 10.109}, 
+  {joined: '2012-04-01',name:'Kumiko', city:'Sydney', orderTotal: 90.5858}, 
+  {joined: '2007-10-17',name:'Paul', city:'Tokyo', orderTotal: 18.4422}
+]">
 
   <table>
     <tr>
-      <td>Name</td>
-      <td>City</td>
+      <th>Name</th>
+      <th>City</th>
+      <th>Order Total</th>
+      <th>Joined</th>
     </tr>
 
-    <tr ng-repeat="person in people">
-      <td>{{ person.name }}</td>
-      <td>{{ person.city }}</td>
+    <tr ng-repeat="cust in customers">
+      <td>{{ cust.name }}</td>
+      <td>{{ cust.city | uppercase }}</td>
+      <td>{{ cust.orderTotal | currency }}</td>
+      <td>{{ cust.joined | date:'dd-MMM-yyyy' }}</td>
     </tr>
   </table>
 
