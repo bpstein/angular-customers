@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<html lang="en" ng-app="myApp" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
+  <title>Angular Customers</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
@@ -20,7 +17,10 @@
   {joined: '2012-04-01',name:'Kumiko', city:'Sydney', orderTotal: 90.5858}, 
   {joined: '2007-10-17',name:'Paul', city:'Tokyo', orderTotal: 18.4422}
 ]">
-
+  <h2>Customers</h2>
+  <br/>
+  Filter: <input type="text" ng-model="customerFilter.name" />
+  <br/>
   <table>
     <tr>
       <th>Name</th>
@@ -29,7 +29,7 @@
       <th>Joined</th>
     </tr>
 
-    <tr ng-repeat="cust in customers">
+    <tr ng-repeat="cust in customers | filter:customerFilter | limitTo: 10 | orderBy: 'name'">
       <td>{{ cust.name }}</td>
       <td>{{ cust.city | uppercase }}</td>
       <td>{{ cust.orderTotal | currency }}</td>
