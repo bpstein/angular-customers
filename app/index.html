@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp" class="no-js">
+<html lang="en" ng-app="customersApp" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,22 +11,17 @@
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body ng-init="customers=[
-  {joined: '2000-12-05', name:'John', city:'London', orderTotal: 9.5532}, 
-  {joined: '2005-11-15',name:'Rahul', city:'New York', orderTotal: 10.109}, 
-  {joined: '2012-04-01',name:'Kumiko', city:'Sydney', orderTotal: 90.5858}, 
-  {joined: '2007-10-17',name:'Paul', city:'Tokyo', orderTotal: 18.4422}
-]">
+<body ng-controller="CustomersController">
   <h2>Customers</h2>
   <br/>
   Filter: <input type="text" ng-model="customerFilter.name" />
   <br/>
   <table>
     <tr>
-      <th ng-click="sortBy='name'; reverse=!reverse">Name</th>
-      <th ng-click="sortBy='city'; reverse=!reverse">City</th>
-      <th ng-click="sortBy='orderTotal'; reverse=!reverse">Order Total</th>
-      <th ng-click="sortBy='joined'; reverse=!reverse">Joined</th>
+      <th ng-click="doSort('name')">Name</th>
+      <th ng-click="doSort('city')">City</th>
+      <th ng-click="doSort('orderTotal')">Order Total</th>
+      <th ng-click="doSort('joined')">Joined</th>
     </tr>
 
     <tr ng-repeat="cust in customers | filter:customerFilter | limitTo: 10 | orderBy:sortBy:reverse">
@@ -37,11 +32,12 @@
     </tr>
   </table>
 
+  <span>Total customers: {{ customers.length }}</span>
+
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
-  <script src="view1/view1.js"></script>
-  <script src="view2/view2.js"></script>
+  <script src="controllers/customersController.js"
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
