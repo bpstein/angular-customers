@@ -12,7 +12,7 @@
         controller: 'OrdersController',
         templateUrl: 'views/orders.html'
       })
-      
+
       .otherwise({
         redirectTo: '/'
       });

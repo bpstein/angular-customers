@@ -6,7 +6,6 @@
     $scope.customer = null;
 
     function init() {
-      // Search the customers for the customer id 
       $scope.customer = customersFactory.getCustomer(customerId);
     }
 
