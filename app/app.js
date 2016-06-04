@@ -13,6 +13,11 @@
         templateUrl: 'views/orders.html'
       })
 
+      .when('/orders', {
+        controller: 'AllOrdersController', 
+        templateUrl: 'views/allorders.html'
+      })
+
       .otherwise({
         redirectTo: '/'
       });
